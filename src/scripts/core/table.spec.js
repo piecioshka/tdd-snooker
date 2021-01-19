@@ -17,6 +17,7 @@ describe('Base Table specs', () => {
     it('should has contain one ball after add one ball', () => {
         // Given
         const t = new Table();
+        t.draw(new CanvasRenderingContext2D)
 
         // When
         t.addBall(new Ball());

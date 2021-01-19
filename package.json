@@ -3,17 +3,36 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "test": "karma start"
+        "test": "jest",
+        "clear": "rm -rf dist/",
+        "clear:all": "rm -rf node_modules/ && npm run clear",
+        "prebuild": "npm run clear",
+        "build": "npm run build:development",
+        "build:development": "webpack --config webpack/webpack.config.js",
+        "build:production": "webpack --config webpack/webpack.config.js --env.production",
+        "watch": "npm run build:development -- -w",
+        "start": "http-server dist/ -c-1",
+        "dev": "webpack-dev-server --config webpack/webpack.config.js"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
     "devDependencies": {
-        "jasmine": "^3.1.0",
-        "karma": "^3.0.0",
-        "karma-chrome-launcher": "^2.2.0",
-        "karma-clear-screen-reporter": "^1.0.0",
-        "karma-commonjs": "^1.0.0",
-        "karma-jasmine": "^1.1.1"
+        "@babel/core": "^7.10.2",
+        "@babel/preset-env": "^7.10.2",
+        "@types/jest": "^26.0.19",
+        "babel-loader": "^8.1.0",
+        "file-loader": "^6.0.0",
+        "http-server": "^0.12.3",
+        "jest": "^26.6.3",
+        "jest-canvas-mock": "^2.3.0",
+        "webpack": "^4.43.0",
+        "webpack-bundle-analyzer": "^3.8.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.11.0",
+        "webpack-merge": "^4.2.2"
+    },
+    "dependencies": {},
+    "jest": {
+        "setupFiles": [
+            "jest-canvas-mock"
+        ]
     }
 }
